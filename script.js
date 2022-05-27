@@ -33,7 +33,6 @@ const fetchData = (url) => {
     fetch(url)
         .then(response => response.json())
         .then((data) => {
-            console.log('city', data)
             const { name } = data;
             const { feels_like } = data.main;
             const { id, main } = data.weather[0];
