@@ -10,15 +10,20 @@ body {
 body {
     margin: 0;
     padding: 0;
-    background-color: hsl(217, 54%, 11%);
-    color: hsl(215, 51%, 70%);
     font-size: 18px;
     font-family: 'Poppins', sans-serif;
+    line-height: 1.5;
+}
+
+.container {
+    width: 100vw;
+    height: 100vh;
+    background-color: hsl(217, 54%, 11%);
+    color: hsl(215, 51%, 70%);
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    line-height: 1.5;
 }
 
 .card {
@@ -31,8 +36,6 @@ body {
     padding: 25px;
     border-radius: 15px;
     box-shadow: 1px 34px 34px 10px rgba(3, 7, 10, 0.39);
-    -webkit-box-shadow: 1px 34px 34px 10px rgba(3, 7, 10, 0.39);
-    -moz-box-shadow: 1px 34px 34px 10px rgba(3, 7, 10, 0.39);
 }
 
 .search-bar {
@@ -82,6 +85,7 @@ body {
 #temp img {
     width: 130px;
     height: 130px;
+    display: none;
 }
 
 #temp {
@@ -96,10 +100,6 @@ body {
     font-size: 17px;
     text-align: center;
     margin-top: -6px;
-}
-
-#climate {
-    padding: 5px;
 }
 
 @media (max-width: 500px) {

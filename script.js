@@ -1,31 +1,31 @@
-//weather data 
-let loc = document.getElementById("location");
-let tempIcon = document.getElementById("temp-icon");
-let tempValue = document.getElementById("temp-value");
-let climate = document.getElementById("climate");
-const searchCity = document.querySelector(".search-city");
-const getLocation = document.querySelector(".get-location");
-const inputValue = document.querySelector(".input-value");
-const APIkey = "6d15fedd68a149451a4f1650a932fa18";
-const startUrl = 'https://api.openweathermap.org/data/2.5/weather?'
+"use strict";
+
+const tempValueEl = document.getElementById('temp-value');
+const locationEl = document.getElementById('location');
+const tempIcon = document.getElementById('temp-icon');
+const searchCity = document.querySelector('.search-city');
+const getLocation = document.querySelector('.get-location');
+const inputValue = document.querySelector('.input-value');
+const API_KEY = '6d15fedd68a149451a4f1650a932fa18';
+const START_URL = 'https://api.openweathermap.org/data/2.5/weather?'
 
 
 const getImage = (id) => {
-    const imgUrl = "./icons/"
+    const IMG_URL = "./icons/"
     if (id < 250) {
-        return `${imgUrl}thunderstorms.svg`
+        return `${IMG_URL}thunderstorms.svg`
     } else if (id < 350) {
-        return `${imgUrl}drizzle.svg`
+        return `${IMG_URL}drizzle.svg`
     } else if (id < 550) {
-        return `${imgUrl}rain.svg`
+        return `${IMG_URL}rain.svg`
     } else if (id < 650) {
-        return `${imgUrl}snow.svg`
+        return `${IMG_URL}snow.svg`
     } else if (id < 750) {
-        return `${imgUrl}haze.svg`
+        return `${IMG_URL}haze.svg`
     } else if (id === 800) {
-        return `${imgUrl}clear-day.svg`
+        return `${IMG_URL}clear-day.svg`
     } else if (id > 800) {
-        return `${imgUrl}cloudy.svg`
+        return `${IMG_URL}cloudy.svg`
     }
 }
 
@@ -36,28 +36,40 @@ const fetchData = (url) => {
             const { name } = data;
             const { feels_like } = data.main;
             const { id, main } = data.weather[0];
-            loc.textContent = name;
-            climate.textContent = main;
-            tempValue.textContent = Math.round(feels_like - 273);
+            locationEl.textContent = name;
+            tempValueEl.textContent = `${Math.round(feels_like - 273)}\u00B0    ${main}`;
             tempIcon.src = getImage(id)
+            tempIcon.style.display = 'block';
         })
-        .catch(err => console.log('wrong'))
+        .catch(err => {
+            locationEl.textContent = `Sorry, we couldn't find '${inputValue.value}'`
+            tempValueEl.textContent = ''
+            tempIcon.style.display = 'none';
+        })
+}
+
+const gettingInputData = () => {
+    const API = `${START_URL}q=${inputValue.value}&appid=${API_KEY}`
+    fetchData(API)
 }
 
 searchCity.addEventListener('click', () => {
-    const API = `${startUrl}q=${inputValue.value}&appid=${APIkey}`
-    fetchData(API)
+    gettingInputData()
+});
+
+inputValue.addEventListener('keypress', (e) => {
+    if (e.key === "Enter") {
+        e.preventDefault();
+        gettingInputData()
+    }
 });
 
 getLocation.addEventListener('click', () => {
-    let long;
-    let lat;
-    // getting location
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition((position) => {
-            long = position.coords.longitude;
-            lat = position.coords.latitude;
-            const API = `${startUrl}lat=${lat}&lon=${long}&appid=${APIkey}`;
+            const long = position.coords.longitude;
+            const lat = position.coords.latitude;
+            const API = `${START_URL}lat=${lat}&lon=${long}&appid=${API_KEY}`;
             fetchData(API)
         });
     }
