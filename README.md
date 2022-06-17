@@ -1,6 +1,6 @@
 # weather-site
 
-A JS project with CSS and HTML using API to recive weather data by location or city in input field.
+An assignment of a weather app using HTML, CSS, JS & API to retrieve data using either search field or location.
 
 Link to watch => https://aya-94.github.io/weather-site/
 
