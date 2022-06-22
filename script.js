@@ -31,7 +31,7 @@ const getImage = (id) => {
 
 const fetchData = (url) => {
     fetch(url)
-        .then(response => response.json())
+        .then((response) => response.json())
         .then((data) => {
             const { name } = data;
             const { feels_like } = data.main;
@@ -41,10 +41,14 @@ const fetchData = (url) => {
             tempIcon.src = getImage(id)
             tempIcon.style.display = 'block';
         })
-        .catch(err => {
-            locationEl.textContent = `Sorry, we couldn't find '${inputValue.value}'`
+        .catch((err) => {
+            const value = inputValue.value
+            locationEl.textContent = `Sorry, we couldn't find '${value}'`
             tempValueEl.textContent = ''
             tempIcon.style.display = 'none';
+        })
+        .finally(() => {
+            inputValue.value = ''
         })
 }
 
