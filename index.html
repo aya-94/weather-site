@@ -13,32 +13,31 @@
     <title>Weather-App</title>
 </head>
 
-<body>
-    <div role="main" class="container">
-        <div class="card">
-            <div class="main-content">
-                <div class="search-field">
-                    <div class="search-bar">
-                        <input class="input-value" type="text" placeholder="Search City">
-                        <button class="search-city" type="button"><i class="fa-solid fa-magnifying-glass"></i></button>
-                        <button class="get-location" type="button"><i class="fa-solid fa-location-dot"></i></button>
-                    </div>
+<body role="main">
+    <div class="card">
+        <div class="search-field">
+            <form id="location-form">
+                <div class="search-bar">
+                    <input id="search-field" type="text" placeholder="Search City" aria-label="Search City">
+                    <button id="search-city" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+                    <button id="get-location" type="button"><i class="fa-solid fa-location-dot"></i></button>
                 </div>
-                <div id="app-container" class="current-weather">
-                    <div class="current-location">
-                        <span id="location">Search city or use current location to get weather information.</span>
-                    </div>
-                    <div id="temp">
-                        <img id="temp-icon" src="./icons/clear-day.svg" alt="weather-icon">
-                        <!-- icons by Metecons -->
-                    </div>
-                    <div class="climate">
-                        <p><span id="temp-value"></span></p>
-                    </div>
-                </div>
-            </div>
+            </form>
         </div>
-        <script src="./script.js"></script>
-</body>
-
+        <div id="app-container" class="current-weather">
+            <div class="current-location">
+                <span id="location">Search city or use current location to get weather information.</span>
+            </div>
+            <div id="temp">
+                <img id="temp-icon" src="./icons/clear-day.svg" alt="weather-icon">
+            </div>
+            <div class="climate">
+                <p id="temp-value"></p>
+            </div>
+            <div id="error"></div>
+            <div id="loading">loading...</div>
+        </div>
+    </body>
+    
+<script src="./script.js"></script>
 </html>
