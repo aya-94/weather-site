@@ -101,9 +101,3 @@ body {
     text-align: center;
     margin-top: -6px;
 }
-
-@media (max-width: 500px) {
-    .get-location {
-        margin-right: 60px;
-    }
-}
