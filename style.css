@@ -1,23 +1,29 @@
 * {
     box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
+}
+
+html,
+body {
+    height: 100%;
 }
 
 body {
-    height: 100vh;
     margin: 0;
+    padding: 0;
     font-size: 18px;
+    font-family: 'Poppins', sans-serif;
     line-height: 1.5;
-    color: #8bacda;
-    background-color: #0d192b;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
 }
 
-i {
-    color: #ffffff;
+.container {
+    width: 100vw;
+    height: 100vh;
+    background-color: hsl(217, 54%, 11%);
+    color: hsl(215, 51%, 70%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
 }
 
 .card {
@@ -25,38 +31,45 @@ i {
     height: 325px;
     background-color: hsl(216, 50%, 16%);
     display: flex;
-    flex-direction: column;
     align-items: center;
+    flex-direction: column;
     padding: 25px;
     border-radius: 15px;
-    box-shadow: 0px 10px 15px rgba(3, 7, 10, 0.39);
-    text-align: center;
+    box-shadow: 1px 34px 34px 10px rgba(3, 7, 10, 0.39);
 }
 
 .search-bar {
     width: 100%;
     max-width: 250px;
-    min-width: 200px;
     background: rgba(255, 255, 255, 0.25);
     display: flex;
+    align-items: center;
     border-radius: 60px;
     padding: 5px 10px;
 }
 
-#search-field {
+.search-bar input {
     background: transparent;
     flex: 1;
     border: 0;
     outline: none;
+    width: 200px;
     color: hsl(215, 51%, 70%);
 }
 
-#search-field::placeholder {
-    color: #ffffff;
+::placeholder {
+    font-family: 'Poppins', sans-serif;
+    color: #fff;
 }
 
-button {
+.search-bar button i {
+    width: 25px;
+    color: #fff;
+}
+
+.search-bar button {
     border: 0;
+    border-radius: 50%;
     width: 30px;
     height: 30px;
     background: transparent;
@@ -65,7 +78,7 @@ button {
 
 .current-location {
     margin-top: 30px;
-    font-size: .8rem;
+    font-size: 15px;
     text-align: center;
 }
 
@@ -77,31 +90,14 @@ button {
 
 #temp {
     display: flex;
-    font-size: 3rem;
+    font-size: 40px;
     justify-content: center;
     flex-direction: column;
     align-items: center;
 }
 
 .climate {
-    font-size: .9rem;
-}
-
-#error {
-    color: rgb(255, 62, 62);
-}
-
-#loading {
-    display: none;
-    animation: loading 1s alternate infinite;
-}
-
-@keyframes loading {
-    0%, 50% {
-        opacity: 1;
-    }
-
-    100% {
-        opacity: 0;
-    }
+    font-size: 17px;
+    text-align: center;
+    margin-top: -6px;
 }
